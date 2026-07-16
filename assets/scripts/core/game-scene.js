@@ -437,15 +437,15 @@ class GameScene extends Phaser.Scene {
       {frame:  "",                       url: "",                                                     angle: 0,                row: 0, col: 2 },
       {frame:  "",                       url: "",                                                     angle: 0,                row: 0, col: 3 },
 
-      { frame: "gj_twIcon_001.png",      url: "https://x.com/rohanis0000gd",                          angle: 0, flipX: false, row: 1, col: 0 },
-      { frame: "gj_ytIcon_001.png",      url: "https://www.youtube.com/@rohanis0000gd",               angle: 0,                row: 1, col: 1 },
-      { frame: "gj_tiktokIcon_001.png",  url: "https://www.tiktok.com/@rohanis00000",                 angle: 0, flipX: false, row: 1, col: 2 },
-      { frame: "gj_githubIcon_001.png",  url: "https://github.com/web-dashers/web-dashers.github.io", angle: 0,                row: 1, col: 3 },
+      { frame: "gj_twIcon_001.png",      url: "https://x.com/spooky14237",                          angle: 0, flipX: false, row: 1, col: 0 },
+      { frame: "gj_ytIcon_001.png",      url: "https://www.youtube.com/channel/UCpXMKEdN4tkXiyMr8dMBn3w",               angle: 0,                row: 1, col: 1 },
+      { frame: "gj_tiktokIcon_001.png",  url: "https://www.tiktok.com/@spooky14237",                 angle: 0, flipX: false, row: 1, col: 2 },
+      { frame: "gj_githubIcon_001.png",  url: "https://github.com/happy-bob007/cube-game", angle: 0,                row: 1, col: 3 },
 
       {frame:  "",                       url: "",                                                     angle: 0,                row: 2, col: 0 },
       {frame:  "",                       url: "",                                                     angle: 0,                row: 2, col: 1 },
       {frame:  "",                       url: "",                                                     angle: 0,                row: 2, col: 2 },
-      { frame: "gj_discordIcon_001.png", url: "https://discord.gg/TfEzAVWPSJ",                        angle: 0,               row: 2, col: 3 },
+      { frame: "gj_discordIcon_001.png", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",                        angle: 0,               row: 2, col: 3 },
 
 
       //{ frame: "gj_instaIcon_001.png",   url: "https://www.instagram.com/",                           angle: -90, flipX: true, row: 1, col: 3 },
@@ -485,11 +485,11 @@ class GameScene extends Phaser.Scene {
     this._downloadBtns = [];
     const _0x4fc67f = [{
       key: "downloadSteam_001",
-      url: "https://github.com/web-dashers/web-dashers.github.io"
+      url: "https://github.com/happy-bob007/cube-game"
     },
     {
       key: "downloadApple_001",
-      url: "https://discord.gg/TfEzAVWPSJ"
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }];
     for (let _0xfeaf5c = 0; _0xfeaf5c < _0x4fc67f.length; _0xfeaf5c++) {
       const _0x1ce2a6 = _0x4fc67f[_0xfeaf5c];
@@ -8613,10 +8613,10 @@ _applyMirrorEffect() {
     this._endLayerInternal.add(this.add.image(containerX - _0x45540f, 352.5, "GJ_WebSheet", "getIt_001.png").setScale(1 / 1.5));
     const _0x34b1bd = [{
       key: "downloadApple_001",
-      url: "https://discord.gg/TfEzAVWPSJ"
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }, {
       key: "downloadSteam_001",
-      url: "https://github.com/web-dashers/web-dashers.github.io"
+      url: "https://github.com/happy-bob007/cube-game"
     }];
     for (let _0x10f8cc = 0; _0x10f8cc < _0x34b1bd.length; _0x10f8cc++) {
       const _0xd7310b = _0x34b1bd[_0x10f8cc];

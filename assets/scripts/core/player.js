@@ -3430,8 +3430,63 @@ _updateWaveJump(dt) {
     return bestSurface;
   }
 
-  _updateSpiderJump(dt) {
+  _performSpiderClickTeleport() {
     const playerSize = this.p.isMini ? 18 : 30;
+    const playerWorldX = this._scene?._playerWorldX ?? centerX;
+    const goingUp = !this.p.gravityFlipped;
+    const nearestSurfaceY = this._findSpiderTeleportSurface(goingUp, playerWorldX, playerSize);
+
+    if (nearestSurfaceY !== null && Number.isFinite(nearestSurfaceY)) {
+      const oldSpiderTeleportY = this.p.y;
+      const normalLandingY = goingUp ? nearestSurfaceY - playerSize : nearestSurfaceY + playerSize;
+      const blockingHazard = this._findSpiderTeleportHazard(goingUp, playerWorldX, playerSize, normalLandingY);
+
+      if (blockingHazard && !window.noClip) {
+        const hazardCenterY = (blockingHazard.bounds.lower + blockingHazard.bounds.upper) / 2;
+        this.p.y = Number.isFinite(hazardCenterY) ? hazardCenterY : normalLandingY;
+        this._spawnSpiderTeleportEffects(oldSpiderTeleportY, this.p.y);
+        this.p.yVelocity = 0;
+        this.p.onGround = false;
+        this.p.canJump = false;
+        this.p.isJumping = false;
+        this.killPlayer();
+        return;
+      }
+
+      this.p.y = normalLandingY;
+      if (goingUp) {
+        this.flipGravity(true, 1.0);
+        this.p.onCeiling = true;
+      } else {
+        this.flipGravity(false, 1.0);
+        this.p.onCeiling = false;
+      }
+      if (blockingHazard && window.noClip) {
+        this.p._spiderTeleportNoclipDeathPending = true;
+        this.p.diedThisFrame = true;
+      }
+      this._spawnSpiderTeleportEffects(oldSpiderTeleportY, this.p.y);
+      this.p.yVelocity = 0;
+      this.p.onGround = true;
+      this.p.canJump = true;
+      this.p.isJumping = false;
+    } else {
+      this.flipGravity(goingUp, 1.0);
+      this.p.yVelocity = 0;
+      this.p.onGround = false;
+      this.p.canJump = false;
+      this.p.isJumping = false;
+    }
+
+    this.p._spiderTeleportAnimTimer = 0;
+    this._spiderAnimTimer = (this._spiderAnimTimer || 0) + 0.12;
+    if (!this._scene?._editorPlaytestActive) {
+      this.p._spiderFlashDuration = 0.5;
+      this.p._spiderFlashTimer = 0.5;
+    }
+    this.runRotateAction();
+  }
+  _updateSpiderJump(dt) {
     const _miniGrav = this.p.isMini ? 1.4 : 1;
     const _gravAmt = p * 0.6 * _miniGrav;
     const canSpiderTeleport = this.p.canJump || this.p.onGround || this.p.onCeiling;
@@ -3441,60 +3496,7 @@ _updateWaveJump(dt) {
     if (!prioritizeOrb && this.p.upKeyPressed && canSpiderTeleport) {
       this.p.upKeyPressed = false;
       this.p.queuedHold = false;
-
-      const playerWorldX = this._scene?._playerWorldX ?? centerX;
-      const goingUp = !this.p.gravityFlipped;
-      const nearestSurfaceY = this._findSpiderTeleportSurface(goingUp, playerWorldX, playerSize);
-
-      if (nearestSurfaceY !== null && Number.isFinite(nearestSurfaceY)) {
-        const oldSpiderTeleportY = this.p.y;
-        const normalLandingY = goingUp ? nearestSurfaceY - playerSize : nearestSurfaceY + playerSize;
-        const blockingHazard = this._findSpiderTeleportHazard(goingUp, playerWorldX, playerSize, normalLandingY);
-
-        if (blockingHazard && !window.noClip) {
-          const hazardCenterY = (blockingHazard.bounds.lower + blockingHazard.bounds.upper) / 2;
-          this.p.y = Number.isFinite(hazardCenterY) ? hazardCenterY : normalLandingY;
-          this._spawnSpiderTeleportEffects(oldSpiderTeleportY, this.p.y);
-          this.p.yVelocity = 0;
-          this.p.onGround = false;
-          this.p.canJump = false;
-          this.p.isJumping = false;
-          this.killPlayer();
-          return;
-        }
-
-        this.p.y = normalLandingY;
-        if (goingUp) {
-          this.flipGravity(true, 1.0);
-          this.p.onCeiling = true;
-        } else {
-          this.flipGravity(false, 1.0);
-          this.p.onCeiling = false;
-        }
-        if (blockingHazard && window.noClip) {
-          this.p._spiderTeleportNoclipDeathPending = true;
-          this.p.diedThisFrame = true;
-        }
-        this._spawnSpiderTeleportEffects(oldSpiderTeleportY, this.p.y);
-        this.p.yVelocity = 0;
-        this.p.onGround = true;
-        this.p.canJump = true;
-        this.p.isJumping = false;
-      } else {
-        this.flipGravity(goingUp, 1.0);
-        this.p.yVelocity = 0;
-        this.p.onGround = false;
-        this.p.canJump = false;
-        this.p.isJumping = false;
-      }
-
-      this.p._spiderTeleportAnimTimer = 0;
-      this._spiderAnimTimer = (this._spiderAnimTimer || 0) + 0.12;
-      if (!this._scene?._editorPlaytestActive) {
-        this.p._spiderFlashDuration = 0.5;
-        this.p._spiderFlashTimer = 0.5;
-      }
-      this.runRotateAction();
+      this._performSpiderClickTeleport();
       return;
     }
 
@@ -4035,6 +4037,10 @@ _updateWaveJump(dt) {
                 this.flipGravity(!this.p.gravityFlipped);
                 this._syncOtherDualGravityForBlueBoost();
                 _boostedThisStep = true;
+              } else if (_orbId === 3004 && this.p.isSpider) {
+                this._performSpiderClickTeleport();
+                _boostedThisStep = true;
+                this._markActivatedOrbSprites(gameObj);
               } else if (_orbId === 444) {
                 const _spPlayerSize = this.p.isMini ? 18 : 30;
                 const _spFloorY = this._gameLayer.getFloorY();
