@@ -4037,7 +4037,7 @@ _updateWaveJump(dt) {
                 this.flipGravity(!this.p.gravityFlipped);
                 this._syncOtherDualGravityForBlueBoost();
                 _boostedThisStep = true;
-              } else if (_orbId === 3004 && this.p.isSpider) {
+              } else if (_orbId === 3004) {
                 this._performSpiderClickTeleport();
                 _boostedThisStep = true;
                 this._markActivatedOrbSprites(gameObj);
