@@ -1,133 +1,133 @@
 window.allLevels = [
     [
-        "stereo_madness", // internal level name
-	    "Stereo Madness", // proper level name
-	    "level_1",        // level id in assets/levels
-	    ["RobTop", "Forever Bound"]   // person who made the level, person who made the song
+        "stereo_madness",
+	    "Neon Genesis",
+	    "level_1",
+	    ["RobTop", "Forever Bound"]
     ],
     [
         "back_on_track",
-	    "Back On Track",
+	    "Pulse Runner",
 	    "level_2",
-	    ["RobTop", "DJVI" ]
+	    ["RobTop", "DJVI"]
     ],
     [
         "polargeist",
-	    "Polargeist",
+	    "Frozen Echo",
 	    "level_3",
 	    ["RobTop", "Step"]
     ],
     [
         "dry_out",
-	    "Dry Out",
+	    "Duststorm Drift",
 	    "level_4",
-	    ["RobTop", "DJVI" ]
+	    ["RobTop", "DJVI"]
     ],
     [
         "base_after_base",
-	    "Base After Base",
+	    "Crystal Core",
 	    "level_5",
 	    ["RobTop", "DJVI"]
     ],
     [
         "cant_let_go",
-	    "Cant Let Go",
+	    "Locked Momentum",
 	    "level_6",
-	    ["RobTop", "DJVI"] 
+	    ["RobTop", "DJVI"]
     ],
     [
         "jumper",
-	    "Jumper",
+	    "Skybound",
 	    "level_7",
 	    ["RobTop", "Waterflame"]
     ],
     [
         "time_machine",
-	    "Time Machine",
+	    "Temporal Shift",
 	    "level_8",
 	    ["RobTop", "Waterflame"]
     ],
     [
         "cycles",
-	    "Cycles",
+	    "Orbit Breaker",
 	    "level_9",
 	    ["RobTop", "DJVI"]
     ],
     [
         "xstep",
-	    "xStep",
+	    "Crossfade",
 	    "level_10",
-	    ["RobTop", "DJVI"] 
+	    ["RobTop", "DJVI"]
     ],
     [
         "clutterfunk",
-	    "Clutterfunk",
+	    "Static Surge",
 	    "level_11",
-	    ["RobTop", "Waterflame"] 
+	    ["RobTop", "Waterflame"]
     ],
     [
         "theory_of_everything",
-	    "Theory Of Everything",
+	    "Infinite Logic",
 	    "level_12",
-	    ["RobTop", "DJ-Nate"] 
+	    ["RobTop", "DJ-Nate"]
     ],
     [
         "electroman_adventures",
-	    "Electroman Adventures",
+	    "Voltage Voyage",
 	    "level_13",
 	    ["RobTop", "Waterflame"]
     ],
     [
         "clubstep",
-	    "Clubstep",
+	    "Night Circuit",
 	    "level_14",
-	    ["RobTop", "DJ-Nate"] 
+	    ["RobTop", "DJ-Nate"]
     ],
     [
         "electrodynamix",
-	    "Electrodynamix",
+	    "Power Grid",
 	    "level_15",
-	    ["RobTop", "DJ-Nate"] 
+	    ["RobTop", "DJ-Nate"]
     ],
     [
         "hexagon_force",
-	    "Hexagon Force",
+	    "Prism Collapse",
 	    "level_16",
-	    ["RobTop", "Waterflame"] 
+	    ["RobTop", "Waterflame"]
     ],
     [
         "blast_processing",
-	    "Blast Processing",
+	    "Quantum Pulse",
 	    "level_17",
-	    ["RobTop", "Waterflame"] 
+	    ["RobTop", "Waterflame"]
     ],
     [
         "theory_of_everything_2",
-	    "Theory Of Everything 2",
+	    "Paradox Engine",
 	    "level_18",
-	    ["RobTop", "DJ-Nate"] 
+	    ["RobTop", "DJ-Nate"]
     ],
     [
         "geometrical_dominator",
-	    "Geometrical Dominator",
+	    "Polygon Overlord",
 	    "level_19",
-	    ["RobTop", "Waterflame"] 
+	    ["RobTop", "Waterflame"]
     ],
     [
         "deadlocked",
-	    "Deadlocked",
+	    "Void Protocol",
 	    "level_20",
-	    ["RobTop", "F-777"] 
+	    ["RobTop", "F-777"]
     ],
     [
         "fingerdash",
-	    "Fingerdash",
+	    "Velocity Rush",
 	    "level_21",
 	    ["RobTop", "MDK"]
     ],
     [
         "dash",
-	    "Dash",
+	    "Final Horizon",
 	    "level_22",
 	    ["RobTop", "MDK"]
     ],/*
